@@ -1,0 +1,10 @@
+##grflangid 0x01
+
+# General GRF strings
+STR_GRF_NAME	:Water Tower for All Climates
+STR_GRF_DESC	:{}Allows to build the water tower industry in all climates.{}Thereby solving the good old {DKGREEN} ECS-water-tower-disappearance problem.{}{}{}{SILVER}Made by: {GOLD} chujo
+
+
+# Other Strings
+STR_PARAM_NAME_SPAWN	:Spawn at the start of the game
+STR_PARAM_DESC_SPAWN	:Turn on to generate water towers at the start of the game.

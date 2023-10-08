@@ -1,0 +1,77 @@
+grf {
+    grfid: "CH\03\02";
+    name: string(STR_GRF_NAME);     // name of GRF
+    desc: string(STR_GRF_DESC);     // description of GRF
+    version: 3;
+    min_compatible_version: 0;
+
+    // parameter for initial spawn
+     param 0 {
+        param_spawn {
+        name: string(STR_PARAM_NAME_SPAWN);
+        desc: string(STR_PARAM_DESC_SPAWN);
+        def_value: 0;
+        type: bool;
+        }
+    }
+}
+
+
+cargotable {
+	WATR
+}
+
+
+spritelayout spr_layout_silos {
+    ground {sprite: GROUNDSPRITE_CONCRETE ;}
+    building {
+        sprite: 2115;
+        yoffset: 3;
+        xoffset: 3;
+        }
+}
+
+tilelayout tile_layout_silos {
+    0, 0:   tile_silos;
+}
+
+item(FEAT_INDUSTRYTILES, tile_silos) {
+    property {
+        substitute:                     02;
+        accepted_cargos:                [[WATR, 8]];
+    }
+    graphics {
+        default:                        spr_layout_silos;
+        foundations:                    return CB_RESULT_FOUNDATIONS;
+    }
+}
+
+
+
+if (param_spawn == 0) {
+    item(FEAT_INDUSTRIES, climate_ignoring_tower) {
+        property {
+            substitute:     INDUSTRYTYPE_WATER_TOWER;
+            cargo_types:    [
+                    accept_cargo("WATR")
+            ];
+            prob_random:    0;
+            prob_in_game:   0;
+            layouts:        [tile_layout_silos];
+        }
+    }
+}
+
+if (param_spawn == 1) {
+    item(FEAT_INDUSTRIES, climate_ignoring_tower) {
+        property {
+            substitute:     INDUSTRYTYPE_WATER_TOWER;
+            cargo_types:    [
+                    accept_cargo("WATR")
+            ];
+            prob_random:    1;
+            prob_in_game:   0;
+            layouts:        [tile_layout_silos];
+        }
+    }
+}
